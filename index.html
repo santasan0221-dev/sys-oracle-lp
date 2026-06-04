@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYS_ORACLE｜あなたの魂はもう答えを知っている</title>
+<meta name="description" content="生年月日から読み解く魂の設計図。数秘術×星読みで才能・使命・転機を鑑定。LINE登録で無料鑑定プレゼント。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Shippori+Mincho+B1:wght@400;500;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════
+   RESET & ROOT
+════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:      #0D1F1A;
+  --bg2:     #081410;
+  --gold:    #D4AF37;
+  --gold-lt: #F0D060;
+  --gold-dk: #A07820;
+  --sub:     #F8F1D4;
+  --white:   #FFFFFF;
+  --muted:   #8A9E97;
+  --line:    #06C755;
+  --glass:   rgba(13,31,26,0.65);
+  --border:  rgba(212,175,55,0.22);
+  --radius:  14px;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Shippori Mincho B1', 'Noto Serif JP', 'Yu Mincho', serif;
+  background: var(--bg);
+  color: var(--sub);
+  overflow-x: hidden;
+  line-height: 1.9;
+}
+img { display:block; max-width:100%; }
+a { text-decoration: none; }
+
+/* ════════════════════════════
+   CANVAS STARS (fixed)
+════════════════════════════ */
+#starCanvas {
+  position: fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index: 0; pointer-events: none;
+  opacity: 0.55;
+}
+
+/* ════════════════════════════
+   LAYOUT
+════════════════════════════ */
+.wrap { position:relative; z-index:1; }
+.inner { max-width: 560px; margin:0 auto; padding:0 22px; }
+section { padding: 88px 0; position: relative; }
+
+/* ════════════════════════════
+   SCROLL ANIMATION
+════════════════════════════ */
+.fade { opacity:0; transform:translateY(30px); transition: opacity .75s ease, transform .75s ease; }
+.fade.in { opacity:1; transform:translateY(0); }
+.fade.d1 { transition-delay:.1s; } .fade.d2 { transition-delay:.2s; }
+.fade.d3 { transition-delay:.3s; } .fade.d4 { transition-delay:.4s; }
+.fade.d5 { transition-delay:.5s; } .fade.d6 { transition-delay:.6s; }
+
+/* ════════════════════════════
+   COMMON SECTION TITLES
+════════════════════════════ */
+.sec-eyebrow {
+  text-align:center; font-size:10px; letter-spacing:.4em;
+  color: var(--gold); margin-bottom:14px;
+  font-family: 'Cinzel Decorative', serif;
+}
+.sec-title {
+  text-align:center; font-size: clamp(22px,5.5vw,30px);
+  font-weight:700; line-height:1.5; margin-bottom:10px;
+}
+.sec-title span { color: var(--gold); }
+.sec-sub {
+  text-align:center; font-size:13px; color: var(--muted);
+  line-height:2; margin-bottom:44px;
+}
+.gold-rule {
+  border:none; height:1px; margin:40px 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.35;
+}
+.gold-vline {
+  width:1px; height:56px; margin:0 auto;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+}
+
+/* ════════════════════════════
+   BUTTONS
+════════════════════════════ */
+.btn-gold {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; padding:18px 28px;
+  background: linear-gradient(135deg, #8C6A10 0%, #D4AF37 45%, #F0D060 62%, #D4AF37 100%);
+  color:#0a0800; font-family:'Noto Serif JP',serif;
+  font-size:15px; font-weight:700; letter-spacing:.07em;
+  border:none; border-radius:50px; cursor:pointer;
+  box-shadow: 0 0 22px rgba(212,175,55,.45), 0 0 44px rgba(212,175,55,.15),
+              inset 0 1px 0 rgba(255,255,255,.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-gold:hover { transform:translateY(-2px);
+  box-shadow: 0 0 34px rgba(212,175,55,.65), 0 0 66px rgba(212,175,55,.25), inset 0 1px 0 rgba(255,255,255,.3); }
+.btn-gold:active { transform:scale(.97); }
+
+.btn-line {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; padding:18px 28px;
+  background: var(--line); color:#fff;
+  font-family:'Noto Serif JP',serif; font-size:15px; font-weight:700;
+  letter-spacing:.06em; border-radius:50px;
+  box-shadow: 0 4px 26px rgba(6,199,85,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-line:hover { transform:translateY(-2px); box-shadow:0 6px 34px rgba(6,199,85,.55); }
+.btn-line:active { transform:scale(.97); }
+.line-ico { width:22px; height:22px; flex-shrink:0; }
+
+.btn-outline {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:100%; padding:15px 24px;
+  background:transparent; color: var(--gold);
+  font-family:'Noto Serif JP',serif; font-size:13px; font-weight:700;
+  letter-spacing:.07em; border:1px solid rgba(212,175,55,.55); border-radius:50px;
+  transition: background .25s, box-shadow .25s, transform .2s;
+}
+.btn-outline:hover { background:rgba(212,175,55,.08); box-shadow:0 0 18px rgba(212,175,55,.25); transform:translateY(-1px); }
+
+/* ════════════════════════════
+   HEADER
+════════════════════════════ */
+header {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:14px 22px;
+  display:flex; align-items:center; justify-content:space-between;
+  background: rgba(8,20,16,.8); backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,175,55,.1);
+}
+.h-logo { font-size:14px; font-weight:700; letter-spacing:.2em; color: var(--gold); font-family:'Cinzel Decorative', serif; }
+.h-cta {
+  font-size:12px; padding:9px 20px; border-radius:50px;
+  background: linear-gradient(135deg, #8C6A10, #D4AF37, #F0D060);
+  color:#0a0800; font-weight:700; letter-spacing:.05em;
+  box-shadow: 0 0 14px rgba(212,175,55,.4); transition:transform .2s;
+}
+.h-cta:active { transform:scale(.96); }
+
+/* ════════════════════════════
+   HERO
+════════════════════════════ */
+#hero {
+  min-height:100svh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:120px 22px 90px;
+  overflow:hidden;
+}
+.hero-parallax {
+  position:absolute; inset:-60px; z-index:0;
+  background: url('images/hero_temple.png') center/cover no-repeat;
+  will-change: transform;
+}
+.hero-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg,
+    rgba(8,20,16,.25) 0%, rgba(8,20,16,.1) 35%,
+    rgba(8,20,16,.55) 75%, rgba(8,20,16,1) 100%);
+}
+.hero-body { position:relative; z-index:2; }
+
+.hero-badge {
+  display:inline-block; font-size:9px; letter-spacing:.3em; color: var(--gold);
+  border:1px solid rgba(212,175,55,.35); padding:7px 22px; border-radius:50px;
+  background:rgba(212,175,55,.06); margin-bottom:38px;
+  font-family: 'Cinzel Decorative', serif;
+}
+.hero-moon {
+  width: clamp(180px,50vw,260px); height: clamp(180px,50vw,260px);
+  border-radius:50%; overflow:hidden;
+  margin:0 auto 32px; position:relative;
+  border:1px solid rgba(212,175,55,.35);
+  box-shadow:
+    0 0 50px rgba(212,175,55,.5),
+    0 0 100px rgba(212,175,55,.25),
+    0 0 200px rgba(212,175,55,.1);
+  animation: moonGlow 5s ease-in-out infinite;
+}
+.hero-moon img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:center 15%;
+  display:block;
+}
+.hero-moon::after {
+  content:''; position:absolute; inset:0; border-radius:50%;
+  border:1px solid rgba(212,175,55,.25);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.3);
+  pointer-events:none;
+}
+@keyframes moonGlow {
+  0%,100% { box-shadow:0 0 50px rgba(212,175,55,.5),0 0 100px rgba(212,175,55,.25),0 0 200px rgba(212,175,55,.1); }
+  50%      { box-shadow:0 0 75px rgba(212,175,55,.7),0 0 150px rgba(212,175,55,.35),0 0 280px rgba(212,175,55,.15); }
+}
+.hero-title {
+  font-size: clamp(28px,7.5vw,48px); font-weight:700;
+  line-height:1.55; margin-bottom:10px;
+}
+.hero-title .accent { color: var(--gold); display:block; text-shadow:0 0 28px rgba(212,175,55,.5); }
+.hero-sub {
+  font-size:14px; color: rgba(248,241,212,.7); line-height:2.1;
+  margin:16px auto 36px; max-width:300px;
+}
+.hero-cta-wrap { max-width:340px; margin:0 auto; }
+.hero-note { font-size:11px; color: var(--muted); margin-top:12px; }
+.hero-scroll {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  font-size:10px; letter-spacing:.25em; color:rgba(212,175,55,.4);
+  animation: scrollBounce 2.5s ease-in-out infinite;
+}
+.hero-scroll::after { content:''; width:1px; height:34px; background:linear-gradient(180deg, rgba(212,175,55,.45), transparent); }
+@keyframes scrollBounce {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50%      { transform:translateX(-50%) translateY(7px); }
+}
+
+/* ════════════════════════════
+   ICON SPRITE (3×3 grid)
+════════════════════════════ */
+.ic {
+  width: 64px; height: 64px; flex-shrink: 0;
+  background-image: url('images/icons_set.png');
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(212,175,55,.2);
+}
+/* Row 0 */
+.ic-compass   { background-position: 0%   0%;   }
+.ic-hourglass { background-position: 50%  0%;   }
+.ic-scales    { background-position: 100% 0%;   }
+/* Row 1 */
+.ic-heart     { background-position: 0%   50%;  }
+.ic-spiral    { background-position: 50%  50%;  }
+.ic-chain     { background-position: 100% 50%;  }
+/* Row 2 */
+.ic-book      { background-position: 0%   100%; }
+.ic-nine      { background-position: 50%  100%; }
+.ic-scroll    { background-position: 100% 100%; }
+
+/* ════════════════════════════
+   PAIN
+════════════════════════════ */
+#pain { overflow:hidden; }
+.pain-parallax {
+  position:absolute; inset:-60px; z-index:0;
+  background: url('images/pain_moon.png') center top/cover no-repeat;
+  will-change:transform;
+}
+.pain-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,20,16,.85) 0%, rgba(8,20,16,.7) 50%, rgba(8,20,16,.88) 100%);
+}
+.pain-inner { position:relative; z-index:2; }
+.pain-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  list-style:none;
+}
+.pain-item {
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  padding:22px 12px;
+  background: rgba(13,31,26,.6); border:1px solid var(--border);
+  border-radius:var(--radius); text-align:center; font-size:13px;
+  backdrop-filter:blur(10px); line-height:1.6;
+  transition: border-color .3s, transform .3s;
+}
+.pain-item:hover { border-color:rgba(212,175,55,.4); transform:translateY(-3px); }
+.pain-item .ic { margin:0 auto; }
+.pain-sign {
+  margin-top:32px; text-align:center; padding:22px 20px;
+  background:rgba(212,175,55,.06); border:1px solid rgba(212,175,55,.25);
+  border-radius:var(--radius);
+  font-size:16px; font-weight:700; line-height:1.8; color: var(--sub);
+}
+.pain-sign span { color: var(--gold); }
+
+/* ════════════════════════════
+   SERVICE
+════════════════════════════ */
+#service { background: var(--bg2); }
+.service-visual {
+  width:100%; max-width:340px; margin:0 auto 36px;
+  border-radius:20px; overflow:hidden;
+  border:1px solid rgba(212,175,55,.25);
+  box-shadow: 0 0 40px rgba(212,175,55,.15), 0 0 80px rgba(212,175,55,.06);
+  position:relative;
+}
+.service-visual img { width:100%; height:280px; object-fit:cover; }
+.service-visual::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:50%;
+  background: linear-gradient(0deg, var(--bg2), transparent);
+}
+.service-book-accent {
+  width:100%; height:120px; border-radius:var(--radius); overflow:hidden;
+  margin-bottom:24px; position:relative;
+  border:1px solid rgba(212,175,55,.18);
+}
+.service-book-accent img { width:100%; height:100%; object-fit:cover; object-position:center 20%; opacity:.5; }
+.service-book-accent::after {
+  content:'SYS_ORACLE'; position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; font-weight:700; letter-spacing:.25em; color: var(--gold);
+  text-shadow: 0 0 20px rgba(212,175,55,.6);
+  background:rgba(8,20,16,.5);
+}
+.service-cards { display:flex; flex-direction:column; gap:12px; }
+.service-card {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:18px 20px;
+  background: var(--glass); border:1px solid var(--border);
+  border-radius:var(--radius); backdrop-filter:blur(12px);
+  transition: border-color .3s, transform .3s;
+}
+.service-card:hover { border-color:rgba(212,175,55,.4); transform:translateX(4px); }
+.service-card-num {
+  font-size:26px; font-weight:700; color: var(--gold);
+  line-height:1; flex-shrink:0; opacity:.6;
+  font-style:italic;
+}
+.service-card-body h3 { font-size:15px; font-weight:700; margin-bottom:4px; color: var(--sub); }
+.service-card-body p { font-size:12px; color: var(--muted); line-height:1.7; }
+
+/* ════════════════════════════
+   STATS / VOICE
+════════════════════════════ */
+#stats { overflow:hidden; }
+.stats-parallax {
+  position:absolute; inset:-60px; z-index:0;
+  background: url('images/voice_reviews.png') center/cover no-repeat;
+  will-change:transform;
+}
+.stats-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,20,16,.88) 0%, rgba(8,20,16,.78) 50%, rgba(8,20,16,.9) 100%);
+}
+.stats-inner { position:relative; z-index:2; }
+.stats-row {
+  display:flex; justify-content:center; gap:0;
+  margin-bottom:48px; padding:24px 0;
+  background: rgba(13,31,26,.65); border:1px solid var(--border);
+  border-radius:20px; backdrop-filter:blur(14px);
+}
+.stat-cell {
+  flex:1; text-align:center;
+  border-right:1px solid rgba(212,175,55,.15);
+}
+.stat-cell:last-child { border-right:none; }
+.stat-num {
+  display:block; font-size: clamp(24px,6vw,34px);
+  font-weight:700; color: var(--gold); line-height:1.1;
+}
+.stat-unit { font-size:13px; color: var(--gold); font-weight:400; }
+.stat-lbl { display:block; font-size:10px; color: var(--muted); letter-spacing:.1em; margin-top:6px; }
+
+.voice-list { display:flex; flex-direction:column; gap:18px; }
+.voice-card {
+  background: rgba(13,31,26,.7); border:1px solid var(--border);
+  border-radius:16px; padding:24px 22px; position:relative;
+  backdrop-filter:blur(12px); transition:border-color .3s;
+}
+.voice-card:hover { border-color:rgba(212,175,55,.38); }
+.voice-q {
+  font-size:48px; color: var(--gold); opacity:.18;
+  font-family:Georgia,serif; line-height:.6;
+  position:absolute; top:16px; left:16px;
+}
+.voice-txt {
+  font-size:14px; line-height:2; color:rgba(248,241,212,.9);
+  padding-top:18px; position:relative; z-index:1;
+}
+.voice-txt em { font-style:normal; color: var(--gold); }
+.voice-meta {
+  margin-top:14px; padding-top:12px;
+  border-top:1px solid rgba(212,175,55,.12);
+  display:flex; align-items:center; gap:12px;
+}
+.voice-ava {
+  width:34px; height:34px; border-radius:50%; flex-shrink:0;
+  background:linear-gradient(135deg, rgba(212,175,55,.3), rgba(212,175,55,.06));
+  border:1px solid rgba(212,175,55,.3);
+  display:flex; align-items:center; justify-content:center; font-size:15px;
+}
+.voice-info strong { display:block; font-size:12px; color: var(--gold); }
+.voice-info span { font-size:11px; color: var(--muted); }
+.voice-stars { margin-left:auto; color: var(--gold); font-size:12px; letter-spacing:2px; opacity:.8; }
+
+/* ════════════════════════════
+   BENEFITS
+════════════════════════════ */
+#benefits { overflow:hidden; }
+.benefits-parallax {
+  position:absolute; inset:-60px; z-index:0;
+  background: url('images/free_crystal.png') center/cover no-repeat;
+  will-change:transform;
+}
+.benefits-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,20,16,.9) 0%, rgba(8,20,16,.78) 50%, rgba(8,20,16,.92) 100%);
+}
+.benefits-inner { position:relative; z-index:2; }
+.benefits-cards { display:flex; flex-direction:column; gap:16px; }
+.benefit-card {
+  background: rgba(13,31,26,.55);
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:20px; padding:28px 24px;
+  backdrop-filter:blur(16px); position:relative; overflow:hidden;
+  transition:border-color .3s, box-shadow .3s;
+}
+.benefit-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.6;
+}
+.benefit-card:hover {
+  border-color:rgba(212,175,55,.6);
+  box-shadow:0 0 30px rgba(212,175,55,.12);
+}
+.benefit-num {
+  display:inline-block; font-size:11px; letter-spacing:.2em; color: var(--gold);
+  border:1px solid rgba(212,175,55,.35); padding:4px 14px; border-radius:50px;
+  background:rgba(212,175,55,.06); margin-bottom:14px;
+}
+.benefit-title { font-size:17px; font-weight:700; margin-bottom:8px; color: var(--sub); }
+.benefit-desc { font-size:13px; color: var(--muted); line-height:1.8; }
+
+/* ════════════════════════════
+   CTA MOON
+════════════════════════════ */
+#cta-moon { overflow:hidden; text-align:center; padding:110px 22px; }
+.cta-parallax {
+  position:absolute; inset:-60px; z-index:0;
+  background: url('images/final_freedom.png') center/cover no-repeat;
+  will-change:transform;
+}
+.cta-overlay {
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(8,20,16,.88) 0%, rgba(8,20,16,.65) 50%, rgba(8,20,16,.9) 100%);
+}
+.cta-body { position:relative; z-index:2; max-width:380px; margin:0 auto; }
+.cta-title {
+  font-size: clamp(22px,5.8vw,32px); font-weight:700;
+  line-height:1.6; margin-bottom:10px;
+}
+.cta-title span { color: var(--gold); display:block; }
+.cta-sub { font-size:13px; color: var(--muted); line-height:2; margin-bottom:36px; }
+.cta-btns { display:flex; flex-direction:column; gap:12px; }
+
+/* ════════════════════════════
+   PRODUCTS
+════════════════════════════ */
+#products { background: var(--bg2); }
+.products-visual {
+  width:100%; max-width:360px; margin:0 auto 36px;
+  border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 0 30px rgba(212,175,55,.1);
+}
+.products-visual img { width:100%; height:220px; object-fit:cover; }
+.products-grid { display:flex; flex-direction:column; gap:14px; }
+.product-card {
+  background: var(--glass); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px 20px;
+  backdrop-filter:blur(10px); display:flex; flex-direction:column; gap:12px;
+  transition:border-color .3s, box-shadow .3s;
+}
+.product-card:hover { border-color:rgba(212,175,55,.4); box-shadow:0 0 22px rgba(212,175,55,.08); }
+.product-card.featured { border-color:rgba(212,175,55,.45); background:rgba(13,31,26,.85); position:relative; }
+.product-card.featured::before {
+  content:'人気No.1'; position:absolute; top:-1px; right:18px;
+  background: var(--gold); color:#000; font-size:10px; font-weight:700;
+  padding:4px 14px; border-radius:0 0 8px 8px; letter-spacing:.08em;
+}
+.prod-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.prod-name { font-size:15px; font-weight:700; flex:1; line-height:1.5; }
+.prod-price { font-size:20px; font-weight:700; color: var(--gold); flex-shrink:0; }
+.prod-price sup { font-size:13px; }
+.prod-desc { font-size:12px; color: var(--muted); line-height:1.8; }
+
+/* ════════════════════════════
+   FAQ
+════════════════════════════ */
+#faq { background: var(--bg); }
+.faq-list { display:flex; flex-direction:column; gap:10px; }
+.faq-item {
+  background: rgba(13,31,26,.5); border:1px solid var(--border);
+  border-radius:var(--radius); overflow:hidden; backdrop-filter:blur(8px);
+  transition:border-color .3s;
+}
+.faq-item:hover { border-color:rgba(212,175,55,.35); }
+.faq-q {
+  padding:20px 22px; font-size:14px; font-weight:700;
+  display:flex; align-items:flex-start; gap:14px; cursor:pointer;
+  user-select:none;
+}
+.faq-qm { color: var(--gold); font-size:18px; font-weight:700; flex-shrink:0; line-height:1.3; }
+.faq-arrow { margin-left:auto; color: var(--gold); opacity:.6; font-size:12px; transition:transform .3s; flex-shrink:0; }
+.faq-item.open .faq-arrow { transform:rotate(180deg); }
+.faq-a {
+  max-height:0; overflow:hidden;
+  transition:max-height .35s ease, padding .25s ease;
+  font-size:13px; color: var(--muted); line-height:1.9;
+  padding:0 22px 0 52px;
+}
+.faq-item.open .faq-a { max-height:200px; padding:0 22px 20px 52px; }
+
+/* ════════════════════════════
+   FOOTER
+════════════════════════════ */
+footer {
+  background: var(--bg2); border-top:1px solid rgba(212,175,55,.1);
+  padding:44px 22px; text-align:center;
+}
+.foot-logo { font-size:16px; font-weight:700; letter-spacing:.2em; color: var(--gold); margin-bottom:8px; font-family:'Cinzel Decorative', serif; }
+.foot-tagline { font-size:12px; color: var(--muted); letter-spacing:.12em; margin-bottom:20px; }
+.foot-sns { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+.foot-sns a {
+  font-size:11px; color:rgba(212,175,55,.55); letter-spacing:.1em;
+  border:1px solid rgba(212,175,55,.2); padding:7px 15px; border-radius:50px;
+  transition: color .2s, border-color .2s;
+}
+.foot-sns a:hover { color: var(--gold); border-color:rgba(212,175,55,.5); }
+.foot-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:18px; }
+.foot-links a { font-size:11px; color:rgba(255,255,255,.25); }
+.foot-copy { font-size:11px; color:rgba(255,255,255,.2); }
+
+/* ════════════════════════════
+   FLOAT BAR
+════════════════════════════ */
+.float-bar {
+  position:fixed; bottom:0; left:0; right:0; z-index:300;
+  padding:12px 16px; display:flex; gap:10px;
+  background:rgba(8,20,16,.88); backdrop-filter:blur(14px);
+  border-top:1px solid rgba(212,175,55,.12);
+}
+.float-bar a {
+  flex:1; padding:14px 10px; border-radius:50px;
+  font-size:13px; font-weight:700;
+  text-align:center; letter-spacing:.04em;
+  transition:transform .2s;
+}
+.float-bar a:active { transform:scale(.96); }
+.f-line { background: var(--line); color:#fff; box-shadow:0 0 16px rgba(6,199,85,.35); }
+.f-gold { background:linear-gradient(135deg,#8C6A10,#D4AF37,#F0D060); color:#0a0800; box-shadow:0 0 16px rgba(212,175,55,.35); }
+.page-pad { height:80px; }
+</style>
+</head>
+
+<body>
+
+<canvas id="starCanvas"></canvas>
+
+<div class="wrap">
+
+<!-- ════ HEADER ════ -->
+<header>
+  <div class="h-logo">SYS_ORACLE</div>
+  <a href="https://line.me/R/ti/p/@504fsgfr?_gl=1*ksl2eh*_gcl_au*NzA5Njg5MDguMTc3ODQwNTc5MA..*_ga*MjExMDAxNzUyNi4xNzc4NDA1Nzkx*_ga_0PV16Y9CZG*czE3ODA1NjQxNDckbzYkZzEkdDE3ODA1NjQzMzgkajU5JGwwJGgw" class="h-cta">無料鑑定</a>
+</header>
+
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="hero-parallax" data-parallax="0.3"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <p class="hero-badge fade d1">✦ 数秘術 × 星読み × 9占術統合システム ✦</p>
+    <div class="hero-moon fade d2">
+      <img src="images/pain_moon.png" alt="moon">
+    </div>
+    <h1 class="hero-title fade d3">
+      あなたの魂は<br>
+      <span class="accent">もう答えを知っている</span>
+    </h1>
+    <p class="hero-sub fade d4">
+      生年月日から読み解く<br>魂の設計図。<br><br>
+      人生の流れ、才能、使命、<br>転機を鑑定します。
+    </p>
+    <div class="hero-cta-wrap fade d5">
+      <a href="https://line.me/R/ti/p/@504fsgfr?_gl=1*ksl2eh*_gcl_au*NzA5Njg5MDguMTc3ODQwNTc5MA..*_ga*MjExMDAxNzUyNi4xNzc4NDA1Nzkx*_ga_0PV16Y9CZG*czE3ODA1NjQxNDckbzYkZzEkdDE3ODA1NjQzMzgkajU5JGwwJGgw" class="btn-line">
+        <svg class="line-ico" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.19 1.72 6.01 4.36 7.78L6 22l3.5-1.87C10.3 20.37 11.14 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+        無料鑑定を受け取る
+      </a>
+      <p class="hero-note">生年月日を送るだけ — 完全無料</p>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ════ PAIN ════ -->
+<section id="pain">
+  <div class="pain-parallax" data-parallax="0.25"></div>
+  <div class="pain-overlay"></div>
+  <div class="inner pain-inner">
+    <p class="sec-eyebrow fade">✦ RESONANCE ✦</p>
+    <h2 class="sec-title fade d1">こんなこと、<span>ありませんか？</span></h2>
+
+    <ul class="pain-grid">
+      <li class="pain-item fade d1"><div class="ic ic-compass"></div>自分の使命が<br>分からない</li>
+      <li class="pain-item fade d2"><div class="ic ic-hourglass"></div>人生が<br>停滞している</li>
+      <li class="pain-item fade d3"><div class="ic ic-scales"></div>何を選べばいいか<br>迷う</li>
+      <li class="pain-item fade d4"><div class="ic ic-heart"></div>恋愛がうまく<br>いかない</li>
+      <li class="pain-item fade d5"><div class="ic ic-spiral"></div>お金の流れが<br>悪い</li>
+      <li class="pain-item fade d6"><div class="ic ic-chain"></div>人間関係に<br>疲れている</li>
+    </ul>
+
+    <div class="pain-sign fade">
+      それは<span>魂からのサイン</span>かもしれません。
+    </div>
+  </div>
+</section>
+
+<!-- ════ SERVICE ════ -->
+<section id="service">
+  <div class="inner">
+    <p class="sec-eyebrow fade">✦ SYSTEM ✦</p>
+    <h2 class="sec-title fade d1">魂の設計図鑑定<span>とは？</span></h2>
+
+    <div class="service-visual fade d2">
+      <img src="images/about_mio.png" alt="SYS_ORACLE 鑑定師 澪">
+    </div>
+
+    <div class="service-book-accent fade d3">
+      <img src="images/about_book.png" alt="数秘術">
+    </div>
+
+    <p class="sec-sub fade d3" style="margin-bottom:28px;">
+      生年月日から読み解く、あなただけの5つの答え
+    </p>
+
+    <div class="service-cards">
+      <div class="service-card fade d1">
+        <div class="service-card-num">01</div>
+        <div class="service-card-body">
+          <h3>魂の本質</h3>
+          <p>あなたが生まれながらに持つ魂のタイプと、本質的な性質を解読します。</p>
+        </div>
+      </div>
+      <div class="service-card fade d2">
+        <div class="service-card-num">02</div>
+        <div class="service-card-body">
+          <h3>才能と天賦の資質</h3>
+          <p>まだ気づいていない才能と、それを活かす方法を数秘術で明らかにします。</p>
+        </div>
+      </div>
+      <div class="service-card fade d3">
+        <div class="service-card-num">03</div>
+        <div class="service-card-body">
+          <h3>使命と人生テーマ</h3>
+          <p>この生で果たすべき使命と、魂が本当に求めている方向性を読み解きます。</p>
+        </div>
+      </div>
+      <div class="service-card fade d4">
+        <div class="service-card-num">04</div>
+        <div class="service-card-body">
+          <h3>人生の転機</h3>
+          <p>大きな変化が訪れるタイミングと、その準備の仕方をお伝えします。</p>
+        </div>
+      </div>
+      <div class="service-card fade d5">
+        <div class="service-card-num">05</div>
+        <div class="service-card-body">
+          <h3>運気の流れ</h3>
+          <p>2026年の運気サイクルと、あなたが動くべき最適なタイミングを解説します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ STATS / VOICE ════ -->
+<section id="stats">
+  <div class="stats-parallax" data-parallax="0.2"></div>
+  <div class="stats-overlay"></div>
+  <div class="inner stats-inner">
+    <p class="sec-eyebrow fade">✦ VOICE ✦</p>
+    <h2 class="sec-title fade d1">受け取った方の<span>声</span></h2>
+
+    <div class="stats-row fade d2">
+      <div class="stat-cell">
+        <span class="stat-num">9</span>
+        <span class="stat-lbl">占術統合</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">24<span class="stat-unit">h</span></span>
+        <span class="stat-lbl">以内にお届け</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-num">∞</span>
+        <span class="stat-lbl">魂の可能性</span>
+      </div>
+    </div>
+
+    <div class="voice-list">
+      <div class="voice-card fade d1">
+        <div class="voice-q">"</div>
+        <p class="voice-txt">観てましたか？という感覚でした。久々に<em>心に響きました</em>。これほど自分のことを言い当てられると思っていなかったので、正直驚いています。</p>
+        <div class="voice-meta">
+          <div class="voice-ava">🌙</div>
+          <div class="voice-info"><strong>ソウルナンバー1番 × 蟹座</strong><span>フリーランスを目指す20代</span></div>
+          <div class="voice-stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="voice-card fade d2">
+        <div class="voice-q">"</div>
+        <p class="voice-txt">止まってしまう時に考えていたことが<em>ドンピシャすぎて驚きました</em>。「なぜ動けないのか」の理由がわかって、少し楽になりました。</p>
+        <div class="voice-meta">
+          <div class="voice-ava">✨</div>
+          <div class="voice-info"><strong>ソウルナンバー1番 × 蟹座</strong><span>会社員（副業検討中）</span></div>
+          <div class="voice-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="voice-card fade d3">
+        <div class="voice-q">"</div>
+        <p class="voice-txt">ずっと同じ恋愛を繰り返してきた理由が、やっと腑に落ちました。「相手が悪いんじゃなく、自分の魂のクセだった」という視点が<em>目からウロコでした</em>。次の恋愛は変われそうな気がしています。</p>
+        <div class="voice-meta">
+          <div class="voice-ava">🌹</div>
+          <div class="voice-info"><strong>ソウルナンバー6番 × 天秤座</strong><span>30代・会社員</span></div>
+          <div class="voice-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="voice-card fade d4">
+        <div class="voice-q">"</div>
+        <p class="voice-txt">頑張っているのに評価されない、認められないというモヤモヤがずっとありました。鑑定書を読んで、<em>才能の使い方がそもそもズレていた</em>と気づきました。方向を変えてみようと思います。</p>
+        <div class="voice-meta">
+          <div class="voice-ava">🌿</div>
+          <div class="voice-info"><strong>ソウルナンバー3番 × 牡羊座</strong><span>30代・フリーランス</span></div>
+          <div class="voice-stars">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="voice-card fade d5">
+        <div class="voice-q">"</div>
+        <p class="voice-txt">人間関係でいつも消耗してしまうのが悩みでした。境界線の引き方が魂の設計図に書いてあるという話が<em>すごくリアルで</em>、読み終わったあと少し楽になりました。PDFも何度も読み返しています。</p>
+        <div class="voice-meta">
+          <div class="voice-ava">🌙</div>
+          <div class="voice-info"><strong>ソウルナンバー2番 × 魚座</strong><span>40代・パート</span></div>
+          <div class="voice-stars">★★★★☆</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BENEFITS ════ -->
+<section id="benefits">
+  <div class="benefits-parallax" data-parallax="0.22"></div>
+  <div class="benefits-overlay"></div>
+  <div class="inner benefits-inner">
+    <p class="sec-eyebrow fade">✦ FREE GIFT ✦</p>
+    <h2 class="sec-title fade d1">LINE登録<span>特典</span></h2>
+    <p class="sec-sub fade d2">3つの特典を無料でお届けします</p>
+
+    <div class="benefits-cards">
+      <div class="benefit-card fade d1">
+        <div class="ic ic-book" style="width:72px;height:72px;margin-bottom:10px;"></div>
+        <div class="benefit-num">特典 01</div>
+        <div class="benefit-title">魂の設計図ミニ鑑定</div>
+        <p class="benefit-desc">生年月日からあなたのソウルナンバーと魂タイプを解読。あなただけのミニ鑑定書をお届けします。</p>
+      </div>
+      <div class="benefit-card fade d2">
+        <div class="ic ic-nine" style="width:72px;height:72px;margin-bottom:10px;"></div>
+        <div class="benefit-num">特典 02</div>
+        <div class="benefit-title">ソウルナンバー診断</div>
+        <p class="benefit-desc">1〜9番のソウルナンバー別の才能・特性・使命を詳しく解説したオリジナル資料をプレゼント。</p>
+      </div>
+      <div class="benefit-card fade d3">
+        <div class="ic ic-scroll" style="width:72px;height:72px;margin-bottom:10px;"></div>
+        <div class="benefit-num">特典 03</div>
+        <div class="benefit-title">開運アクションPDF</div>
+        <p class="benefit-desc">あなたの数字に合わせた開運行動リスト。今日からできる具体的なアクションをまとめたPDFです。</p>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;" class="fade d4">
+      <a href="https://line.me/R/ti/p/@504fsgfr?_gl=1*ksl2eh*_gcl_au*NzA5Njg5MDguMTc3ODQwNTc5MA..*_ga*MjExMDAxNzUyNi4xNzc4NDA1Nzkx*_ga_0PV16Y9CZG*czE3ODA1NjQxNDckbzYkZzEkdDE3ODA1NjQzMzgkajU5JGwwJGgw" class="btn-line">
+        <svg class="line-ico" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.19 1.72 6.01 4.36 7.78L6 22l3.5-1.87C10.3 20.37 11.14 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+        特典を受け取る（LINE登録）
+      </a>
+      <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:12px;">勧誘なし · いつでも退会OK</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA MOON ════ -->
+<section id="cta-moon">
+  <div class="cta-parallax" data-parallax="0.28"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-body">
+    <div class="gold-vline" style="margin-bottom:32px;"></div>
+    <h2 class="cta-title fade">
+      運命を知る準備は
+      <span>できていますか？</span>
+    </h2>
+    <p class="cta-sub fade d1">
+      生年月日だけでいい。<br>
+      答えはずっと、そこにありました。
+    </p>
+    <div class="cta-btns fade d2">
+      <a href="https://line.me/R/ti/p/@504fsgfr?_gl=1*ksl2eh*_gcl_au*NzA5Njg5MDguMTc3ODQwNTc5MA..*_ga*MjExMDAxNzUyNi4xNzc4NDA1Nzkx*_ga_0PV16Y9CZG*czE3ODA1NjQxNDckbzYkZzEkdDE3ODA1NjQzMzgkajU5JGwwJGgw" class="btn-line">
+        <svg class="line-ico" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.19 1.72 6.01 4.36 7.78L6 22l3.5-1.87C10.3 20.37 11.14 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+        無料鑑定を受け取る
+      </a>
+      <a href="https://sys-oracle.stores.jp" class="btn-gold">✦ 鑑定書を見る</a>
+    </div>
+    <div class="gold-vline" style="margin-top:36px;"></div>
+  </div>
+</section>
+
+<!-- ════ PRODUCTS ════ -->
+<section id="products">
+  <div class="inner">
+    <p class="sec-eyebrow fade">✦ READINGS ✦</p>
+    <h2 class="sec-title fade d1">さらに深く<span>知りたい方へ</span></h2>
+    <p class="sec-sub fade d2">生年月日から読み解く、あなただけの鑑定書</p>
+
+    <div class="products-visual fade d2">
+      <img src="images/products_docs.png" alt="魂の設計図鑑定書">
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card fade d1">
+        <div class="prod-head">
+          <span class="prod-name">魂タイプ診断</span>
+          <span class="prod-price"><sup>¥</sup>980</span>
+        </div>
+        <p class="prod-desc">あなたの魂が持つ本質的なタイプを数秘術で解読。まずはここから。</p>
+        <a href="https://sys-oracle.stores.jp/items/69fbf229d5cfeb08318174a9" class="btn-outline">STORESで見る →</a>
+      </div>
+
+      <div class="product-card featured fade d2">
+        <div class="prod-head">
+          <span class="prod-name">あなたが報われない理由</span>
+          <span class="prod-price"><sup>¥</sup>2,980</span>
+        </div>
+        <p class="prod-desc">努力しても結果が出ない本当の原因。魂レベルでの才能の使い方と、報われる生き方を解説。</p>
+        <a href="https://sys-oracle.stores.jp/items/69fbd46b3ee3fd4dc084699e" class="btn-gold" style="font-size:13px; padding:14px 20px;">STORESで見る →</a>
+      </div>
+
+      <div class="product-card fade d3">
+        <div class="prod-head">
+          <span class="prod-name">恋愛カルマ鑑定書</span>
+          <span class="prod-price"><sup>¥</sup>3,980</span>
+        </div>
+        <p class="prod-desc">繰り返す恋愛パターンの根本原因と、本当の相手を引き寄せるための魂の処方箋。</p>
+        <a href="https://sys-oracle.stores.jp/items/6a013c08f7672e006ddb0782" class="btn-outline">STORESで見る →</a>
+      </div>
+
+      <div class="product-card fade d4">
+        <div class="prod-head">
+          <span class="prod-name">人生の全地図</span>
+          <span class="prod-price"><sup>¥</sup>12,800</span>
+        </div>
+        <p class="prod-desc">才能・使命・人生の転機・運気サイクルを網羅した、完全版の魂の設計図鑑定書。</p>
+        <a href="https://sys-oracle.stores.jp/items/69fef61254f09529af7e07f4" class="btn-outline">STORESで見る →</a>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;" class="fade">
+      <a href="https://sys-oracle.stores.jp" class="btn-gold">✦ すべての鑑定書を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section id="faq">
+  <div class="inner">
+    <p class="sec-eyebrow fade">✦ FAQ ✦</p>
+    <h2 class="sec-title fade d1">よくある<span>質問</span></h2>
+
+    <div class="faq-list">
+      <div class="faq-item fade d1">
+        <div class="faq-q">
+          <span class="faq-qm">Q</span>
+          <span>本当に当たりますか？</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <p class="faq-a">数秘術は生年月日に刻まれた数字のパターンを読み解く体系です。「当たる・当たらない」ではなく、「なぜそのパターンが生まれるか」を構造として理解するものです。「自分のことだ」と感じる方が非常に多くいらっしゃいます。</p>
+      </div>
+      <div class="faq-item fade d2">
+        <div class="faq-q">
+          <span class="faq-qm">Q</span>
+          <span>個人情報は安全ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <p class="faq-a">お預かりする生年月日はご本人の鑑定目的のみに使用します。第三者への提供・販売は一切行いません。LINEは公式アカウントを使用しており、安全にご利用いただけます。</p>
+      </div>
+      <div class="faq-item fade d3">
+        <div class="faq-q">
+          <span class="faq-qm">Q</span>
+          <span>鑑定結果はいつ届きますか？</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <p class="faq-a">購入後にLINEへ生年月日と太陽星座をお送りください。通常24時間以内にPDF形式でお届けしています（混雑時は最大48時間）。</p>
+      </div>
+      <div class="faq-item fade d4">
+        <div class="faq-q">
+          <span class="faq-qm">Q</span>
+          <span>支払い方法は？</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <p class="faq-a">クレジットカード・PayPay・コンビニ払い・銀行振込に対応しています。STORESの安全な決済システムをご利用いただけます。</p>
+      </div>
+      <div class="faq-item fade d5">
+        <div class="faq-q">
+          <span class="faq-qm">Q</span>
+          <span>占い初心者でも大丈夫ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </div>
+        <p class="faq-a">はい、まったく問題ありません。専門用語を使わず、わかりやすい言葉でお届けしています。占いが初めての方、スピリチュアルに馴染みのない方にもご好評いただいています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <p class="foot-logo">SYS_ORACLE</p>
+  <p style="font-size:13px; color:var(--muted); margin-bottom:6px;">数秘術×星読み鑑定師 澪（Mio）</p>
+  <p class="foot-tagline">魂の声に耳を澄ませる</p>
+  <div class="foot-sns">
+    <a href="https://www.tiktok.com/@mio_sys_oracle_bio">TikTok</a>
+    <a href="https://www.instagram.com/mio_sys_oracle">Instagram</a>
+    <a href="https://www.youtube.com/@mio_sys_oracle">YouTube</a>
+    <a href="https://twitter.com/santauranai">X</a>
+  </div>
+  <div class="foot-links">
+    <a href="#">特定商取引法に基づく表記</a>
+    <a href="#">プライバシーポリシー</a>
+    <a href="https://sys-oracle.stores.jp">STORES</a>
+  </div>
+  <p class="foot-copy">© 2026 SYS_ORACLE / 澪（Mio）</p>
+</footer>
+
+<div class="page-pad"></div>
+
+</div><!-- /wrap -->
+
+<!-- ════ FLOAT BAR ════ -->
+<div class="float-bar">
+  <a href="https://line.me/R/ti/p/@504fsgfr?_gl=1*ksl2eh*_gcl_au*NzA5Njg5MDguMTc3ODQwNTc5MA..*_ga*MjExMDAxNzUyNi4xNzc4NDA1Nzkx*_ga_0PV16Y9CZG*czE3ODA1NjQxNDckbzYkZzEkdDE3ODA1NjQzMzgkajU5JGwwJGgw" class="f-line">LINE無料鑑定</a>
+  <a href="https://sys-oracle.stores.jp" class="f-gold">鑑定書を見る</a>
+</div>
+
+<script>
+/* ── STAR CANVAS ── */
+(function(){
+  const c = document.getElementById('starCanvas');
+  const ctx = c.getContext('2d');
+  let W, H, stars;
+  function resize(){ W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+  function init(n){
+    stars = [];
+    for(let i=0;i<n;i++) stars.push({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*1.5+0.2,
+      a: Math.random(),
+      da: (Math.random()*.004+.001)*(Math.random()<.5?1:-1),
+      gold: Math.random()<.1
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      s.a += s.da;
+      if(s.a>1||s.a<.05) s.da*=-1;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle = s.gold
+        ? `rgba(212,175,55,${s.a*.65})`
+        : `rgba(255,255,255,${s.a*.55})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{ resize(); init(180); });
+  resize(); init(180); draw();
+})();
+
+/* ── PARALLAX ── */
+(function(){
+  const els = document.querySelectorAll('[data-parallax]');
+  let ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(()=>{
+      const sy = window.scrollY;
+      els.forEach(el=>{
+        const speed = parseFloat(el.dataset.parallax||0.3);
+        const rect = el.closest('section').getBoundingClientRect();
+        const offset = (rect.top + sy) * speed;
+        el.style.transform = `translateY(${offset * 0.25}px)`;
+      });
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
+/* ── SCROLL FADE ── */
+(function(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+  // hero immediate
+  document.querySelectorAll('#hero .fade').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('in'), 200+i*160);
+  });
+})();
+
+/* ── FAQ ACCORDION ── */
+(function(){
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
